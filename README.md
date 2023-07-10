@@ -6,6 +6,7 @@
   * [Installation](#installation)
   * [Bug / Feature Request](#bug---feature-request)
   * [Future scope of project](#future-scope)
+  * Deployment on aws
 
 depolyment on AWS
 http://flightfareproject-env.eba-h2tcs5yw.eu-north-1.elasticbeanstalk.com/
