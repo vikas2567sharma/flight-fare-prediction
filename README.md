@@ -7,9 +7,10 @@
   * [Bug / Feature Request](#bug---feature-request)
   * [Future scope of project](#future-scope)
 
-
+depolyment on AWS
+http://flightfareproject-env.eba-h2tcs5yw.eu-north-1.elasticbeanstalk.com/
 ## Demo
-Link:http://127.0.0.1:5000/predict
+[Link:http://127.0.0.1:5000/predict](http://flightfareproject-env.eba-h2tcs5yw.eu-north-1.elasticbeanstalk.com/)
 
 ## Overview
 This is a Flask web app which predicts fare of Flight ticket.
