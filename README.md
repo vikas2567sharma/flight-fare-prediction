@@ -9,9 +9,9 @@
   * Deployment on aws
 
 depolyment on AWS
-http://flightfareproject-env.eba-h2tcs5yw.eu-north-1.elasticbeanstalk.com/
+[http://flightfareproject-env.eba-h2tcs5yw.eu-north-1.elasticbeanstalk.com/](http://flightfarepredictionproject-env.eba-bmsjwvcm.eu-north-1.elasticbeanstalk.com/)
 ## Demo
-http://flightfareproject-env.eba-h2tcs5yw.eu-north-1.elasticbeanstalk.com/
+[http://flightfareproject-env.eba-h2tcs5yw.eu-north-1.elasticbeanstalk.com/](http://flightfarepredictionproject-env.eba-bmsjwvcm.eu-north-1.elasticbeanstalk.com/)
 
 ## Overview
 This is a Flask web app which predicts fare of Flight ticket.
