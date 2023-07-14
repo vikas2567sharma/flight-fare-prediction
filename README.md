@@ -6,11 +6,12 @@
   * [Installation](#installation)
   * [Bug / Feature Request](#bug---feature-request)
   * [Future scope of project](#future-scope)
+  * Deployment on AWS
+    link :- http://flightfarepredictionproject-env.eba-bmsjwvcm.eu-north-1.elasticbeanstalk.com/
 
 
 ## Demo
-Link:http://127.0.0.1:5000/predict
-
+http://flightfarepredictionproject-env.eba-bmsjwvcm.eu-north-1.elasticbeanstalk.com/
 ## Overview
 This is a Flask web app which predicts fare of Flight ticket.
 
