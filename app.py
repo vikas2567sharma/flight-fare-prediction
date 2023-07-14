@@ -3,12 +3,19 @@ from flask_cors import cross_origin
 import sklearn
 import pickle
 import pandas as pd
+
 app = Flask(__name__)
-model = pickle.load(open("flightfarepred.pkl", "rb"))
+model = pickle.load(open("flight_rf.pkl", "rb"))
+
+
+
 @app.route("/")
 @cross_origin()
 def home():
     return render_template("home.html")
+
+
+
 
 @app.route("/predict", methods = ["GET", "POST"])
 @cross_origin()
@@ -200,6 +207,20 @@ def predict():
             Vistara_Premium_economy = 0
             Trujet = 0
 
+        # print(Jet_Airways,
+        #     IndiGo,
+        #     Air_India,
+        #     Multiple_carriers,
+        #     SpiceJet,
+        #     Vistara,
+        #     GoAir,
+        #     Multiple_carriers_Premium_economy,
+        #     Jet_Airways_Business,
+        #     Vistara_Premium_economy,
+        #     Trujet)
+
+        # Source
+        # Banglore = 0 (not in column)
         Source = request.form["Source"]
         if (Source == 'Delhi'):
             s_Delhi = 1
@@ -242,45 +263,64 @@ def predict():
         if (Source == 'Cochin'):
             d_Cochin = 1
             d_Delhi = 0
-            d_Bengluru = 0
+            d_New_Delhi = 0
             d_Hyderabad = 0
             d_Kolkata = 0
         
         elif (Source == 'Delhi'):
             d_Cochin = 0
             d_Delhi = 1
-            d_Bengluru = 0
+            d_New_Delhi = 0
             d_Hyderabad = 0
             d_Kolkata = 0
 
-        elif (Source == 'Bengluru'):
+        elif (Source == 'New_Delhi'):
             d_Cochin = 0
             d_Delhi = 0
-            d_Bengluru = 1
+            d_New_Delhi = 1
             d_Hyderabad = 0
             d_Kolkata = 0
 
         elif (Source == 'Hyderabad'):
             d_Cochin = 0
             d_Delhi = 0
-            d_Bengluru = 0
+            d_New_Delhi = 0
             d_Hyderabad = 1
             d_Kolkata = 0
 
         elif (Source == 'Kolkata'):
             d_Cochin = 0
             d_Delhi = 0
-            d_Bengluru = 0
+            d_New_Delhi = 0
             d_Hyderabad = 0
             d_Kolkata = 1
 
         else:
             d_Cochin = 0
             d_Delhi = 0
-            d_Bengluru = 0
+            d_New_Delhi = 0
             d_Hyderabad = 0
             d_Kolkata = 0
 
+        # print(
+        #     d_Cochin,
+        #     d_Delhi,
+        #     d_New_Delhi,
+        #     d_Hyderabad,
+        #     d_Kolkata
+        # )
+        
+
+    #     ['Total_Stops', 'Journey_day', 'Journey_month', 'Dep_hour',
+    #    'Dep_min', 'Arrival_hour', 'Arrival_min', 'Duration_hours',
+    #    'Duration_mins', 'Airline_Air India', 'Airline_GoAir', 'Airline_IndiGo',
+    #    'Airline_Jet Airways', 'Airline_Jet Airways Business',
+    #    'Airline_Multiple carriers',
+    #    'Airline_Multiple carriers Premium economy', 'Airline_SpiceJet',
+    #    'Airline_Trujet', 'Airline_Vistara', 'Airline_Vistara Premium economy',
+    #    'Source_Chennai', 'Source_Delhi', 'Source_Kolkata', 'Source_Mumbai',
+    #    'Destination_Cochin', 'Destination_Delhi', 'Destination_Hyderabad',
+    #    'Destination_Kolkata', 'Destination_New Delhi']
         
         prediction=model.predict([[
             Total_stops,
@@ -311,16 +351,18 @@ def predict():
             d_Delhi,
             d_Hyderabad,
             d_Kolkata,
-            d_Bengluru,
+            d_New_Delhi
         ]])
 
         output=round(prediction[0],2)
 
-        return render_template('home.html',prediction_text="Flight Predicted price is Rs. {}".format(output))
+        return render_template('home.html',prediction_text="Your Flight price is Rs. {}".format(output))
+
 
     return render_template("home.html")
 
 
+
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
-    #app.run(debug=True)
+    app.run(debug=True)
